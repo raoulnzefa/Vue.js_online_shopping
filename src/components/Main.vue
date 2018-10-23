@@ -5,8 +5,10 @@
 </template>
 
 <script>
-    import { mapActions, mapGetters } from 'vuex';
-    import Product from './product/Product.vue';
+    import { mapActions, mapGetters } from 'vuex'
+    import Product from './product/Product.vue'
+    import {db} from '../db/config'
+
     export default {
         components: {
             ProductItem: Product
@@ -20,16 +22,29 @@
             ...mapGetters(['products'])
         },
         methods: {
-            ...mapActions(['getProducts'])
+            ...mapActions(['updateProducts'])
         },
         created() {
-            this.getProducts()
+            this.updateProducts()
         }
     }
 </script>
 
-<style scoped lang="scss">
-    .columns {
-        margin-top: 40px;
+<style lang="scss">
+    img {
+        width: auto !important;
+        max-width: 100% !important;
+        margin: 0 auto;
+    }
+
+    .centered-content {
+        text-align: left;
+        .column {
+            margin: 0 auto;
+        }
+    }
+
+    .card {
+        height: 100%;
     }
 </style>

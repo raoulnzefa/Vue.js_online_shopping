@@ -1,10 +1,21 @@
-import Firebase from 'firebase'
+import firebase from 'firebase'
 
-export default Firebase.initializeApp({
-    apiKey: "AIzaSyBOdle_ylibHW-MKbjwVNp_AdNljX2UI-w",
-    authDomain: "shop-cart-38ee2.firebaseapp.com",
-    databaseURL: "https://shop-cart-38ee2.firebaseio.com",
-    projectId: "shop-cart-38ee2",
-    storageBucket: "shop-cart-38ee2.appspot.com",
-    messagingSenderId: "1013850569077"
+const firebaseApp = firebase.initializeApp({
+    apiKey: "AIzaSyCGuLr_w12F_qcvuXJ76XiyMsLnAZrunx0",
+    authDomain: "notebooks-e4990.firebaseapp.com",
+    databaseURL: "https://notebooks-e4990.firebaseio.com",
+    projectId: "notebooks-e4990",
+    storageBucket: "notebooks-e4990.appspot.com",
+    messagingSenderId: "577752367266"
 });
+
+export const db = firebaseApp.database();
+export const firebaseAuth = firebase.auth;
+
+// export const firebaseListen = function (callback) {
+//     firebase.auth().onAuthStateChanged(function(user) {
+//         if (user) {
+//             callback(user)
+//         }
+//     });
+// };

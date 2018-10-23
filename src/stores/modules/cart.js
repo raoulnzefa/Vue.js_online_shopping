@@ -1,65 +1,78 @@
-import * as types from '../mutations-types';
+import Vue from 'vue'
+import * as types from '../mutations-types'
+import {db} from '../../db/config'
+import {Toast} from 'buefy/dist/components/toast'
+
 const state = {
-    products: [
-        {
-            id: 1,
-            title: 'macbook Retina 13.3" ME662 (2013)',
-            thumbnail_url: 'http://media.bizwebmedia.net//sites/72783/data/images/2016/2/4713895macbook_pro_retina.png',
-            price: 1000,
-            quantity: 10,
-            description: "3.0GHz Dual-core Haswell Intel Core i5 Turbo Boost up to 3.2 GHz, 3MB L3 cache 8GB (two 4GB SO-DIMMs) of 1600MHz DDR3 SDRAM"
-        },{
-            id: 2,
-            title: 'Macbook Pro 13.3" Retina MF841LL/A',
-            thumbnail_url: 'http://media.bizwebmedia.net//sites/72783/data/images/2015/11/3220113retina13.jpg',
-            price: 1200,
-            quantity: 15,
-            description: 'Macbook Pro 13.3" Retina MF841LL/A Model 2015 Option Ram Care 12/2016'
-        },{
-            id: 3,
-            title: 'Macbook Pro 15.4" Retina MC975LL/A Model 2012',
-            thumbnail_url: 'http://media.bizwebmedia.net//sites/72783/data/images/2015/7/2913337mf841_13_inch_2_9ghz_with_retina_display_early_2015.png',
-            price: 1800,
-            quantity: 1,
-            description: "3.0GHz Dual-core Haswell Intel Core i5 Turbo Boost up to 3.2 GHz, 3MB L3 cache 8GB (two 4GB SO-DIMMs) of 1600MHz DDR3 SDRAM"
-        },{
-            id: 4,
-            title: 'Retina MacBook Pro 13 inch MF841',
-            thumbnail_url: 'http://media.bizwebmedia.net//sites/72783/data/images/2016/2/4713895macbook_pro_retina.png',
-            price: 1000,
-            quantity: 20,
-            description: "2.9 Ghz Dual-Core Intel Core i5 Broadwell Tubro boost up to 3.3 GHz with L3 3MB cache"
-        },{
-            id: 5,
-            title: 'Macbook Pro 15.4" Retina MC975LL/A Model 2012',
-            thumbnail_url: 'http://media.bizwebmedia.net//sites/72783/data/images/2015/7/2913337mf841_13_inch_2_9ghz_with_retina_display_early_2015.png',
-            price: 1800,
-            quantity: 1,
-            description: "3.0GHz Dual-core Haswell Intel Core i5 Turbo Boost up to 3.2 GHz, 3MB L3 cache 8GB (two 4GB SO-DIMMs) of 1600MHz DDR3 SDRAM"
-        },{
-            id: 6,
-            title: 'Retina MacBook Pro 13 inch MF841',
-            thumbnail_url: 'http://media.bizwebmedia.net//sites/72783/data/images/2016/2/4713895macbook_pro_retina.png',
-            price: 1000,
-            quantity: 20,
-            description: "2.9 Ghz Dual-Core Intel Core i5 Broadwell Tubro boost up to 3.3 GHz with L3 3MB cache"
-        }
-    ]
+    userCart: []
 };
 
 const mutations = {
-    [types.UPDATE_PRODUCTS] (state, productList) {
-        state.productList = productList;
-        state.isLoading = false;
-    }
+    [types.UPDATE_CHECKOUT] (state, {item, userCartGetter, isAdd, quantity}) {
+        if (isAdd) {
+            let id = item.id;
+            let index = state.userCart.map((el) => {return el.id}).indexOf(id);
+            Vue.set(state.userCart[index], 'quantity', quantity);
+        } else {
+            state.userCart.push(item);
+        }
+    },
 };
 
 const actions = {
+    updateCheckout({commit}, user) {
+        // let uid = user.uid;
+        // db.ref('carts/' + uid).on('value', (products) => {
+        //     console.log(products.val())
+        // }, (errorObject)  => {
+        //     console.log("The read failed: " + errorObject.code);
+        // });
+    },
 
+    addToCheckout(context, item) {
+        let uid = context.rootGetters.currentUser.uid;
+        let userCartGetter = context.getters.userCart;
+        let record = userCartGetter.filter(el => {
+            return el.id == item.id
+        });
+        let isAdd = false;
+        let quantity = 1;
+
+        if (record.length > 0) {
+            isAdd = !isAdd;
+            let prevQuantity = record[0].quantity;
+            quantity = prevQuantity + 1;
+            context.commit(types.UPDATE_CHECKOUT, {item, userCartGetter, isAdd, quantity});
+        } else {
+            item.quantity = 1;
+            context.commit(types.UPDATE_CHECKOUT, {item, isAdd});
+        }
+        // return db.ref('carts/' + uid).push(item)
+        //     .then(() => {
+        //         Toast.open({
+        //             duration: 500,
+        //             message: 'Товар добавлен в корзину',
+        //             type: 'is-success'
+        //         });
+        //     })
+        //     .catch((err) => {
+        //         Toast.open({
+        //             duration: 2000,
+        //             message: err.message,
+        //             type: 'is-danger'
+        //         });
+        //     });
+    },
+
+    submitCheckout({commit}, cart) {
+        console.log(cart)
+    }
 };
 
 const getters = {
-
+    userCart: (state) => {
+        return state.userCart
+    },
 };
 
 export default {

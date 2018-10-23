@@ -1,1 +1,5 @@
 export const UPDATE_PRODUCTS = 'UPDATE_PRODUCTS';
+export const UPDATE_CHECKOUT = 'UPDATE_CHECKOUT';
+export const ADD_PRODUCT = 'ADD_PRODUCT';
+export const USER_CHANGED = 'USER_CHANGED';
+export const LOGOUT = 'LOGOUT';

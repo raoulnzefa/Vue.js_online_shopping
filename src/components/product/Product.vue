@@ -9,25 +9,24 @@
             <div class="card-content">
                 <div class="media">
                     <div class="media-content">
-                        <p class="title is-4">{{item.title}}</p>
+                        <router-link :to="'/product/' + item.id"><span>{{item.title}}</span></router-link>
                     </div>
                 </div>
                 <strong class="price">{{item.price}} грн.</strong>
                 <div class="content">{{item.description}}</div>
-                <a class="button is-primary" href="javascript:;" @click="addItem">В корзину</a>
+                <a class="button is-primary" href="javascript:;" @click="addToCheckout(item)">В корзину</a>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+    import {mapActions, mapGetters} from 'vuex'
     export default {
         props: ['item'],
         methods: {
-            addItem() {
-
-            }
-        },
+            ...mapActions(['addToCheckout'])
+        }
     }
 </script>
 
