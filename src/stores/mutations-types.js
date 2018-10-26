@@ -1,5 +1,8 @@
+export const LOADED = 'LOADED';
 export const UPDATE_PRODUCTS = 'UPDATE_PRODUCTS';
 export const UPDATE_CHECKOUT = 'UPDATE_CHECKOUT';
-export const ADD_PRODUCT = 'ADD_PRODUCT';
+export const UPDATE_CHECKOUT_FROM_DB = 'UPDATE_CHECKOUT_FROM_DB';
 export const USER_CHANGED = 'USER_CHANGED';
+export const SET_LANG = 'SET_LANG';
 export const LOGOUT = 'LOGOUT';
+export const UPDATE_TOTAL_PRICE = 'UPDATE_TOTAL_PRICE';

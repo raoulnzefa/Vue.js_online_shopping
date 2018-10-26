@@ -1,0 +1,15 @@
+{
+  "added": "This product was added to checkout",
+  "auth" : {
+    "continue" : "For continue sign-up please!",
+    "success" : "Success",
+    "successLogin" : "Success logined as"
+  },
+  "header" : {
+    "login" : "Sign In",
+    "register" : "Sign Up",
+    "out" : "Sign Out",
+    "checkout" : "Checkout",
+    "lang" : "Language"
+  }
+}

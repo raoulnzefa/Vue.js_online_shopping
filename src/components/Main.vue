@@ -1,31 +1,33 @@
 <template>
-    <div class="columns is-multiline">
-        <product-item v-for="prod in products" :item="prod" :key="prod.id"></product-item>
+    <div>
+        <div class="spinner-bg" v-show="isLoading">
+            <spinner></spinner>
+        </div>
+        <div class="columns is-multiline" v-show="!isLoading">
+            <product-item v-for="prod in products" :item="prod" :key="prod.id"></product-item>
+        </div>
     </div>
 </template>
 
 <script>
-    import { mapActions, mapGetters } from 'vuex'
+    import {mapActions, mapGetters} from 'vuex'
+    import Spinner from 'vue-simple-spinner'
     import Product from './product/Product.vue'
-    import {db} from '../db/config'
+    import {app} from '../main'
 
     export default {
         components: {
-            ProductItem: Product
-        },
-        data() {
-            return {
-
-            }
+            ProductItem: Product,
+            Spinner
         },
         computed: {
-            ...mapGetters(['products'])
+            ...mapGetters(['products', 'isLoading'])
         },
         methods: {
             ...mapActions(['updateProducts'])
         },
         created() {
-            this.updateProducts()
+            this.updateProducts();
         }
     }
 </script>

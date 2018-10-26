@@ -1,6 +1,7 @@
 import * as types from '../mutations-types'
 import {db} from '../../db/config'
 import {Toast} from 'buefy/dist/components/toast'
+import {Loading} from 'buefy/dist/components/loading'
 
 const state = {
     products: []
@@ -14,9 +15,10 @@ const mutations = {
 
 const actions = {
     updateProducts({commit}) {
-        db.ref('notebooks').on("value", function(products) {
+        db.ref('notebooks').on("value", (products) => {
             commit(types.UPDATE_PRODUCTS, products.val());
-        }, function (errorObject) {
+            commit(types.LOADED);
+        }, (errorObject) => {
             console.log("The read failed: " + errorObject.code);
         });
     }

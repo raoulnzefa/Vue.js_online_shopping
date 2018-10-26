@@ -2,13 +2,15 @@ import Vue from 'vue'
 import * as types from '../mutations-types'
 import {db} from '../../db/config'
 import {Toast} from 'buefy/dist/components/toast'
+import {i18n} from '../../lang/lang'
 
 const state = {
-    userCart: []
+    userCart: [],
+    totalPrice: 0
 };
 
 const mutations = {
-    [types.UPDATE_CHECKOUT] (state, {item, userCartGetter, isAdd, quantity}) {
+    [types.UPDATE_CHECKOUT] (state, {item, isAdd, quantity}) {
         if (isAdd) {
             let id = item.id;
             let index = state.userCart.map((el) => {return el.id}).indexOf(id);
@@ -17,61 +19,100 @@ const mutations = {
             state.userCart.push(item);
         }
     },
+
+    [types.UPDATE_CHECKOUT_FROM_DB] (state, items) {
+        state.userCart = items;
+    },
+
+    [types.UPDATE_TOTAL_PRICE] (state, price) {
+        state.totalPrice = price;
+    }
 };
 
 const actions = {
-    updateCheckout({commit}, user) {
-        // let uid = user.uid;
-        // db.ref('carts/' + uid).on('value', (products) => {
-        //     console.log(products.val())
-        // }, (errorObject)  => {
-        //     console.log("The read failed: " + errorObject.code);
-        // });
+    updateCheckout(context, userCart) {
+        let uid = context.rootGetters.currentUser.uid;
+        db.ref('carts/' + uid)
+            .set(userCart)
+            .then(() => {
+                Toast.open({
+                    duration: 500,
+                    message: i18n.t('added'),
+                    type: 'is-success'
+                })
+            })
+            .catch((err) => {
+                Toast.open({
+                    duration: 2000,
+                    message: err.message,
+                    type: 'is-danger'
+                });
+            });
+    },
+
+    updateTotalPrice(context) {
+        let priceArr = context.state.userCart.reduce((sum, el) => {
+            return sum + (el.price * el.quantity);
+        }, 0);
+        context.commit(types.UPDATE_TOTAL_PRICE, priceArr);
     },
 
     addToCheckout(context, item) {
-        let uid = context.rootGetters.currentUser.uid;
         let userCartGetter = context.getters.userCart;
         let record = userCartGetter.filter(el => {
             return el.id == item.id
         });
         let isAdd = false;
         let quantity = 1;
+        let prevQuantity;
 
         if (record.length > 0) {
             isAdd = !isAdd;
-            let prevQuantity = record[0].quantity;
+            prevQuantity = record[0].quantity;
             quantity = prevQuantity + 1;
-            context.commit(types.UPDATE_CHECKOUT, {item, userCartGetter, isAdd, quantity});
-        } else {
-            item.quantity = 1;
-            context.commit(types.UPDATE_CHECKOUT, {item, isAdd});
         }
-        // return db.ref('carts/' + uid).push(item)
-        //     .then(() => {
-        //         Toast.open({
-        //             duration: 500,
-        //             message: 'Товар добавлен в корзину',
-        //             type: 'is-success'
-        //         });
-        //     })
-        //     .catch((err) => {
-        //         Toast.open({
-        //             duration: 2000,
-        //             message: err.message,
-        //             type: 'is-danger'
-        //         });
-        //     });
+        item.quantity = quantity;
+        context.commit(types.UPDATE_CHECKOUT, {item, isAdd, quantity});
+        context.dispatch('updateTotalPrice', userCartGetter);
+        context.dispatch('updateCheckout', userCartGetter);
     },
 
-    submitCheckout({commit}, cart) {
-        console.log(cart)
-    }
+    getCartFromDB(context, user) {
+        let uid = user.uid;
+        db.ref('carts/' + uid).once('value')
+            .then((data) => {
+                if (data.val()) {
+                    context.commit(types.UPDATE_CHECKOUT_FROM_DB, data.val());
+                    context.dispatch('updateTotalPrice');
+                    context.commit(types.LOADED);
+                }
+            })
+            .catch((err) => {
+                Toast.open({
+                    duration: 2000,
+                    message: err.message,
+                    type: 'is-danger'
+                });
+            })
+    },
+
+    submitCheckout(context) {
+        if (!context.rootGetters.currentUser.uid) {
+            Toast.open({
+                duration: 2000,
+                message: i18n.t('auth.continue'),
+                type: 'is-danger'
+            });
+        }
+    },
 };
 
 const getters = {
     userCart: (state) => {
         return state.userCart
+    },
+    totalPrice: (state) => {
+        return state.totalPrice
     },
 };
 

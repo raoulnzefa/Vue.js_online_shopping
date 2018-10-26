@@ -1,8 +1,8 @@
 import * as types from '../mutations-types'
-import {firebaseAuth, firebaseListen} from '../../db/config'
-import {store} from '../store'
+import {firebaseAuth} from '../../db/config'
 import {Toast} from 'buefy/dist/components/toast'
 import {router} from '../../main'
+import {i18n} from '../../lang/lang'
 
 const state = {
     currentUser : {
@@ -10,34 +10,36 @@ const state = {
         userName: '',
         email: ''
     },
-    isUser: false
+    isUser: false,
+    lang : i18n.locale
 };
 
 const mutations = {
-    [types.UPDATE_PRODUCTS] (state, productList) {
-        state.productList = productList;
-    },
-
-    [types.LOGOUT] (state) {
-        state.isUser = false;
+    [types.SET_LANG] (state, lang) {
+        state.lang = lang;
+        i18n.locale = lang;
     },
 
     [types.USER_CHANGED] (state, {displayName, email, uid}) {
         let userName = displayName;
         state.isUser = true;
         state.currentUser = { ...state.currentUser, userName, email, uid};
-    }
+    },
+
+    [types.LOGOUT] (state) {
+        state.isUser = false;
+    },
 };
 
 const actions = {
-    registerUser({commit}, {name, email, password}) {
+    registerUser({}, {name, email, password}) {
         firebaseAuth()
             .createUserWithEmailAndPassword(email, password)
             .then(({user}) => {
                 if (user) {
                     Toast.open({
                         duration: 2000,
-                        message: 'Успех:)',
+                        message: i18n.t('auth.success'),
                         type: 'is-success'
                     });
                     user.updateProfile({
@@ -66,10 +68,10 @@ const actions = {
 
     login({}, {email, password}) {
         return firebaseAuth().signInWithEmailAndPassword(email, password)
-            .then(() => {
+            .then(({user}) => {
                 Toast.open({
                     duration: 2000,
-                    message: 'Вы успешно вошли, как'+' '+getters.currentUser(state).userName,
+                    message: i18n.t('auth.successLogin') + ' '+ user.displayName,
                     type: 'is-success'
                 });
                 router.push({ path: '/' })
@@ -90,8 +92,26 @@ const actions = {
 
     firebaseAuthWatcher({commit, dispatch}) {
         firebaseAuth().onAuthStateChanged((user) => {
-            commit(types.USER_CHANGED, user);
+            if (user) {
+                commit(types.USER_CHANGED, user);
+                dispatch('getCartFromDB', user);
+            }
         })
+    },
+
+    async setLang({commit}, lang) {
+        if (lang in i18n.messages) {
+            commit(types.SET_LANG, lang);
+        } else {
+            try {
+                const res = await import(`../../lang/data/${lang}.json`);
+                commit(types.SET_LANG, lang);
+                i18n.setLocaleMessage(lang, res);
+            }
+            catch (e) {
+                console.log(e)
+            }
+        }
     }
 };
 

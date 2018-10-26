@@ -1,7 +1,6 @@
 <template>
     <div id="app">
         <store-header></store-header>
-        <messages></messages>
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -14,13 +13,12 @@
 
 <script>
     import Header from './components/Header.vue'
-    import Messages from './components/messages/Messages.vue'
     import {mapActions, mapGetters} from 'vuex'
+
     export default {
         name: 'app',
         components: {
-            StoreHeader: Header,
-            Messages
+            StoreHeader: Header
         },
         methods: {
             ...mapActions(['firebaseAuthWatcher'])
@@ -29,10 +27,9 @@
             this.firebaseAuthWatcher();
         }
     }
-
 </script>
 
-<style scoped>
+<style>
     #app {
         font-family: 'Avenir', Helvetica, Arial, sans-serif;
         -webkit-font-smoothing: antialiased;
@@ -40,8 +37,12 @@
         text-align: center;
         color: #2c3e50;
     }
+    
+    .label {
+        text-align: left;
+    }
 
-    .container {
-        margin-top: 40px !important;
+    .spinner-bg {
+        margin-top: 150px;
     }
 </style>

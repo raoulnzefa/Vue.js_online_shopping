@@ -10,9 +10,9 @@ export const routes = [
     {path: '/', component: Main, name: 'mainpage'},
     {path: '/product/:id', component: ProductView, name: 'product'},
     {path: '/404', component: NotFound, name: 'not-found', props: {msg: 'Страница не найдена'}},
-    {path: '/cart', component: ShoppingCart, name: 'shoppingcart'},
+    {path: '/cart', component: ShoppingCart, name: 'shoppingCart'},
     {path: '/login', component: Login, name: 'login'},
     {path: '/register', component: Register, name: 'register'},
     {path: '/user', component: User, name: 'user'},
-    {path: '*', redirect: '/404' }
+    {path: '*', redirect: '/404'}
 ];

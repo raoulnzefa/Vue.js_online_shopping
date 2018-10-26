@@ -1,6 +1,6 @@
 <template>
     <div class="columns is-centered">
-        <div class="column is-two-fifths">
+        <div class="column">
             <div class="bd-snippet-preview">
                 <table class="table">
                     <thead>
@@ -37,3 +37,9 @@
         }
     }
 </script>
+
+<style scoped>
+    table {
+        width: 100%;
+    }
+</style>

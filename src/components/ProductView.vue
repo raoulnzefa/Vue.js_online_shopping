@@ -1,9 +1,11 @@
 <template>
     <div>
-        <div class="product" v-if="productsFound">
+        <div class="spinner-bg" v-show="isLoading">
+            <spinner></spinner>
+        </div>
+        <div class="product" v-show="!isLoading" v-if="productsFound">
             <div class="thumbnail">
-                <img :src="product.thumbnail_url"
-                     alt="Placeholder image">
+                <img :src="product.thumbnail_url" alt="">
             </div>
             <div class="desc">
                 <h2>
@@ -26,11 +28,13 @@
 
 <script>
     import {mapActions, mapGetters} from 'vuex'
+    import Spinner from 'vue-simple-spinner'
     import NotFound from './NotFound'
 
     export default {
         components: {
-            NotFound
+            NotFound,
+            Spinner
         },
 
         data() {
@@ -41,7 +45,7 @@
         },
 
         computed: {
-            ...mapGetters(['products']),
+            ...mapGetters(['products', 'isLoading']),
             product() {
                 let prId = this.$route.params.id;
                 if (prId > this.products.length) {

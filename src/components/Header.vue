@@ -19,19 +19,28 @@
                     <div class="navbar-end">
                         <div class="navbar-item">
                             <div class="buttons" v-if="!isUser">
-                                <router-link :to="'/login'" class="button is-light">Логин</router-link>
+                                <router-link :to="'/login'" class="button is-light">{{$t('header.login')}}</router-link>
                                 <router-link :to="'/register'" class="button is-primary">
-                                    <strong>Регистрация</strong>
+                                    <strong>{{$t('header.register')}}</strong>
                                 </router-link>
                             </div>
                             <div class="buttons" v-else>
                                 <router-link :to="'/user'" class="button is-light">{{currentUser.userName}}</router-link>
-                                <a class="button is-primary" href="javascript:;" @click="logout">Выйти</a>
+                                <a class="button is-primary" href="javascript:;" @click="logout">{{$t('header.out')}}</a>
+                            </div>
+                            <div class="buttons">
+                                <b-dropdown>
+                                    <button class="button" slot="trigger">
+                                        <span>{{$t('header.lang')}}</span>
+                                    </button>
+                                    <b-dropdown-item @click="setLang('ru')">RU</b-dropdown-item>
+                                    <b-dropdown-item @click="setLang('en')">ENG</b-dropdown-item>
+                                </b-dropdown>
                             </div>
                         </div>
                         <div class="navbar-item">
                             <router-link :to="'/cart'" class="button is-light">
-                                <strong>Мой заказ</strong>
+                                <strong>{{$t('header.checkout')}}</strong>
                             </router-link>
                         </div>
                     </div>
@@ -48,12 +57,29 @@
             ...mapGetters(['isUser', 'currentUser'])
         },
         methods: {
-            ...mapActions(['logout'])
-        },
+            ...mapActions(['logout', 'setLang'])
+        }
     }
 </script>
 
-<style scoped lange="sass">
+<style lang="scss">
+    header {
+        margin-bottom: 30px;
+    }
+
+    .navbar-item {
+        .buttons, .button {
+            margin-bottom: 0 !important;
+        }
+        .dropdown {
+            margin-left: 10px;
+            text-align: left;
+            .dropdown-menu {
+                min-width: inherit;
+            }
+        }
+    }
+
     .navbar-btn a {
         color: white;
     }
