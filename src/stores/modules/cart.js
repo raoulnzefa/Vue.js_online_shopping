@@ -14,7 +14,9 @@ const mutations = {
         if (isAdd) {
             let id = item.id;
             let index = state.userCart.map((el) => {return el.id}).indexOf(id);
-            Vue.set(state.userCart[index], 'quantity', quantity);
+            if (index > -1) {
+                Vue.set(state.userCart[index], 'quantity', quantity);
+            }
         } else {
             state.userCart.push(item);
         }
@@ -24,22 +26,37 @@ const mutations = {
         state.userCart = items;
     },
 
+    [types.REMOVE_CHECKOUT] (state, {id}) {
+        let index = state.userCart.map((el) => {return el.id}).indexOf(id);
+        if (index > -1) {
+            state.userCart.splice(index, 1);
+        }
+    },
+
     [types.UPDATE_TOTAL_PRICE] (state, price) {
         state.totalPrice = price;
     }
 };
 
 const actions = {
-    updateCheckout(context, userCart) {
+    updateCheckout(context, removing) {
         let uid = context.rootGetters.currentUser.uid;
         db.ref('carts/' + uid)
-            .set(userCart)
+            .set(context.getters.userCart)
             .then(() => {
-                Toast.open({
-                    duration: 500,
-                    message: i18n.t('added'),
-                    type: 'is-success'
-                })
+                if (!removing) {
+                    Toast.open({
+                        duration: 500,
+                        message: i18n.t('added'),
+                        type: 'is-success'
+                    })
+                } else {
+                    Toast.open({
+                        duration: 500,
+                        message: i18n.t('removed'),
+                        type: 'is-success'
+                    })
+                }
             })
             .catch((err) => {
                 Toast.open({
@@ -74,7 +91,15 @@ const actions = {
         item.quantity = quantity;
         context.commit(types.UPDATE_CHECKOUT, {item, isAdd, quantity});
         context.dispatch('updateTotalPrice', userCartGetter);
-        context.dispatch('updateCheckout', userCartGetter);
+        context.dispatch('updateCheckout', false);
+    },
+
+    removeFromCheckout(context, id) {
+        let userCartGetter = context.getters.userCart;
+        let removing = true;
+        context.commit(types.REMOVE_CHECKOUT, {id});
+        context.dispatch('updateTotalPrice', userCartGetter);
+        context.dispatch('updateCheckout', removing);
     },
 
     getCartFromDB(context, user) {

@@ -23,8 +23,16 @@
         computed: {
             ...mapGetters(['products', 'isLoading'])
         },
+        data() {
+            return {
+                show: false
+            }
+        },
         methods: {
-            ...mapActions(['updateProducts'])
+            ...mapActions(['updateProducts']),
+            animateElem() {
+                this.show = !this.show;
+            }
         },
         created() {
             this.updateProducts();

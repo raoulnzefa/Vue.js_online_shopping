@@ -11,6 +11,7 @@
                         <th>Продукт</th>
                         <th class="has-text-centered">Цена (грн)</th>
                         <th class="has-text-centered">Количество</th>
+                        <th class="has-text-centered">Действие</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -27,6 +28,9 @@
                         </td>
                         <td class="has-text-centered">
                             {{item.quantity}}
+                        </td>
+                        <td class="has-text-centered">
+                            <button class="button is-danger" @click="removeFromCheckout(item.id)">Удалтть</button>
                         </td>
                     </tr>
                     </tbody>
@@ -60,7 +64,7 @@
             ...mapGetters(['userCart', 'isUser', 'isLoading', 'totalPrice'])
         },
         methods: {
-            ...mapActions(['addToCheckout', 'submitCheckout', 'getCartFromDB'])
+            ...mapActions(['addToCheckout', 'submitCheckout', 'getCartFromDB', 'removeFromCheckout'])
         }
     }
 </script>

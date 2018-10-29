@@ -1,5 +1,6 @@
 {
   "added": "This product was added to checkout",
+  "removed": "This product was removed from checkout",
   "auth" : {
     "continue" : "For continue sign-up please!",
     "success" : "Success",
