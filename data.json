@@ -1,50 +1,397 @@
-[
-  {
-    "id": 1,
-    "title": "macbook Retina 13.3\" ME662 (2013)",
-    "thumbnail_url": "http://media.bizwebmedia.net//sites/72783/data/images/2016/2/4713895macbook_pro_retina.png",
-    "price": 1000,
-    "quantity": 10,
-    "description": "3.0GHz Dual-core Haswell Intel Core i5 Turbo Boost up to 3.2 GHz, 3MB L3 cache 8GB (two 4GB SO-DIMMs) of 1600MHz DDR3 SDRAM"
+{
+  "products": {
+    "electronics": {
+      "catName": "Электроника",
+      "categories": {
+        "notebooks": {
+          "catName": "Ноутбуки",
+          "products": [
+            {
+              "id": 1,
+              "title": "macbook Retina 13.3\" ME662 (2013)",
+              "thumbnail_url": "http://media.bizwebmedia.net//sites/72783/data/images/2016/2/4713895macbook_pro_retina.png",
+              "price": 1000,
+              "quantity": 10,
+              "description": "3.0GHz Dual-core Haswell Intel Core i5 Turbo Boost up to 3.2 GHz, 3MB L3 cache 8GB (two 4GB SO-DIMMs) of 1600MHz DDR3 SDRAM"
+            },
+            {
+              "id": 2,
+              "title": "Macbook Pro 13.3\" Retina MF841LL/A",
+              "thumbnail_url": "http://media.bizwebmedia.net//sites/72783/data/images/2015/11/3220113retina13.jpg",
+              "price": 1200,
+              "quantity": 15,
+              "description": "Macbook Pro 13.3\" Retina MF841LL/A Model 2015 Option Ram Care 12/2016"
+            },
+            {
+              "id": 3,
+              "title": "Macbook Pro 15.4\" Retina MC975LL/A Model 2012",
+              "thumbnail_url": "http://media.bizwebmedia.net//sites/72783/data/images/2015/7/2913337mf841_13_inch_2_9ghz_with_retina_display_early_2015.png",
+              "price": 1800,
+              "quantity": 1,
+              "description": "3.0GHz Dual-core Haswell Intel Core i5 Turbo Boost up to 3.2 GHz, 3MB L3 cache 8GB (two 4GB SO-DIMMs) of 1600MHz DDR3 SDRAM"
+            },
+            {
+              "id": 4,
+              "title": "Retina MacBook Pro 13 inch MF841",
+              "thumbnail_url": "http://media.bizwebmedia.net//sites/72783/data/images/2016/2/4713895macbook_pro_retina.png",
+              "price": 1000,
+              "quantity": 20,
+              "description": "2.9 Ghz Dual-Core Intel Core i5 Broadwell Tubro boost up to 3.3 GHz with L3 3MB cache"
+            },
+            {
+              "id": 5,
+              "title": "Macbook Pro 15.4\" Retina MC975LL/A Model 2012",
+              "thumbnail_url": "http://media.bizwebmedia.net//sites/72783/data/images/2015/7/2913337mf841_13_inch_2_9ghz_with_retina_display_early_2015.png",
+              "price": 1800,
+              "quantity": 1,
+              "description": "3.0GHz Dual-core Haswell Intel Core i5 Turbo Boost up to 3.2 GHz, 3MB L3 cache 8GB (two 4GB SO-DIMMs) of 1600MHz DDR3 SDRAM"
+            },
+            {
+              "id": 6,
+              "title": "Retina MacBook Pro 13 inch MF841",
+              "thumbnail_url": "http://media.bizwebmedia.net//sites/72783/data/images/2016/2/4713895macbook_pro_retina.png",
+              "price": 1000,
+              "quantity": 20,
+              "description": "2.9 Ghz Dual-Core Intel Core i5 Broadwell Tubro boost up to 3.3 GHz with L3 3MB cache"
+            }
+          ]
+        },
+        "phones": {
+          "catName": "Телефоны",
+          "products": [
+            {
+              "id": 8,
+              "title": "Samsung Galaxy A5 2017 Duos SM-A520 Black",
+              "thumbnail_url": "https://i1.rozetka.ua/goods/1828043/samsung_sm_a520fzdsek_images_1828043119.jpg",
+              "price": 6999,
+              "quantity": 10,
+              "description": "Екран (5.2, Super AMOLED, 1920x1080) / Samsung Exynos 7880 (1.9 ГГц)/ основна камера: 16 Мп, фронтальна камера: 16 Мп/ RAM 3 ГБ/ 32 ГБ вбудованої пам'яті + microSD/SDHC (до 256 ГБ)/ 3G/ LTE/ GPS/ ГЛОНАСС/ підтримка 2-х SIM-карток (Nano-SIM)/ Android 6.0 (Marshmallow)/ 3000 мА·год"
+            },
+            {
+              "id": 9,
+              "title": "Samsung Galaxy A7 2017 Duos SM-A720 Gold",
+              "thumbnail_url": "https://i2.rozetka.ua/goods/1828064/samsung_sm_a720fzddsek_images_1828064784.jpg",
+              "price": 8000,
+              "quantity": 15,
+              "description": "Екран (5.7\", Super AMOLED, 1920x1080)/ Samsung Exynos 7880 (1.9 ГГц)/ основна камера: 16 Мп, фронтальна камера: 16 Мп/ RAM 3 ГБ/ 32 ГБ вбудованої пам'яті + microSD/SDHC (до 256 ГБ)/ 3G/ LTE/ GPS/ ГЛОНАСС/ підтримка 2-х SIM-карток (Nano-SIM)/ Android 6.0 (Marshmallow)/ 3600 мА·год"
+            },
+            {
+              "id": 10,
+              "title": "Doogee X6s White",
+              "thumbnail_url": "https://i1.rozetka.ua/goods/7807408/doogee_x6s_white_images_7807408656.jpg",
+              "price": 9000,
+              "quantity": 1,
+              "description": "Екран (5.7\", Super AMOLED, 1920x1080)/ Samsung Exynos 7880 (1.9 ГГц)/ основна камера: 16 Мп, фронтальна камера: 16 Мп/ RAM 3 ГБ/ 32 ГБ вбудованої пам'яті + microSD/SDHC (до 256 ГБ)/ 3G/ LTE/ GPS/ ГЛОНАСС/ підтримка 2-х SIM-карток (Nano-SIM)/ Android 6.0 (Marshmallow)/ 3600 мА·год"
+            },
+            {
+              "id": 11,
+              "title": "Xiaomi Redmi Note 5 3/32GB Black (Global Rom + OTA)",
+              "thumbnail_url": "https://i1.rozetka.ua/goods/5031666/xiaomi_redmi_note5_332gb_black_images_5031666528.jpg",
+              "price": 10000,
+              "quantity": 20,
+              "description": "Экран (5.99, IPS, 2160x1080)/ Qualcomm Snapdragon 636 (1.8 ГГц)/ основная камера: 12 Мп + 5 Мп, фронтальная камера: 13 Мп/ RAM 3 ГБ/ 32 ГБ встроенной памяти + microSD (до 128 ГБ)/ 3G/ LTE/ GPS/ GLONASS/ поддержка 2х SIM-карт (Nano-SIM)/ Android 8.1 (Oreo)/ 4000 мА*ч"
+            },
+            {
+              "id": 11,
+              "title": "Xiaomi Redmi Note 5",
+              "thumbnail_url": "https://i1.rozetka.ua/goods/7944253/xiaomi_redmi_note_6_pro_3_32gb_black_images_7944253431.jpg",
+              "price": 10000,
+              "quantity": 20,
+              "description": "Экран (5.99, IPS, 2160x1080)/ Qualcomm Snapdragon 636 (1.8 ГГц)/ основная камера: 12 Мп + 5 Мп, фронтальная камера: 13 Мп/ RAM 3 ГБ/ 32 ГБ встроенной памяти + microSD (до 128 ГБ)/ 3G/ LTE/ GPS/ GLONASS/ поддержка 2х SIM-карт (Nano-SIM)/ Android 8.1 (Oreo)/ 4000 мА*ч"
+            },
+            {
+              "id": 11,
+              "title": "Xiaomi Note 4 Black",
+              "thumbnail_url": "https://i2.rozetka.ua/goods/7926554/huawei_p_smart_plus_iris_purple_images_7926554529.jpg",
+              "price": 10000,
+              "quantity": 20,
+              "description": "Экран (5.99, IPS, 2160x1080)/ Qualcomm Snapdragon 636 (1.8 ГГц)/ основная камера: 12 Мп + 5 Мп, фронтальная камера: 13 Мп/ RAM 3 ГБ/ 32 ГБ встроенной памяти + microSD (до 128 ГБ)/ 3G/ LTE/ GPS/ GLONASS/ поддержка 2х SIM-карт (Nano-SIM)/ Android 8.1 (Oreo)/ 4000 мА*ч"
+            }
+          ]
+        },
+        "watches": {
+          "catName": "Часы",
+          "products": [
+            {
+              "id": 14,
+              "title": "Samsung Gear Sport Black (SM-R600NZKASEK)",
+              "thumbnail_url": "https://i1.rozetka.ua/goods/2269727/samsung_gear_sport_black_images_2269727424.jpg",
+              "price": 5000,
+              "quantity": 10,
+              "description": "Екран 1.2 Super AMOLED, сенсорний (360 x 360) / годинникофон / двоядерний процесор (1 ГГц) / 768 МБ оперативної пам'яті / 4 ГБ вбудованої пам'яті / Bluetooth 4.2 / Wi-Fi b/g/n / GPS / Tizen ОС / 44.6 x 42.9 x 11.6 мм / чорний"
+            },
+            {
+              "id": 15,
+              "title": "Samsung Galaxy Watch 46mm Silver (SM-R800NZSASEK) + Сертификат 500 грн. на следующую покупку в подарок!",
+              "thumbnail_url": "https://i1.rozetka.ua/goods/6520354/samsung_sm_r800nzsasek_images_6520354134.jpg",
+              "price": 8000,
+              "quantity": 15,
+              "description": "Екран 1.2 Super AMOLED, сенсорний (360 x 360) / годинникофон / двоядерний процесор (1 ГГц) / 768 МБ оперативної пам'яті / 4 ГБ вбудованої пам'яті / Bluetooth 4.2 / Wi-Fi b/g/n / GPS / Tizen ОС / 44.6 x 42.9 x 11.6 мм / чорний"
+            },
+            {
+              "id": 16,
+              "title": "Nomi Kids Heroes W2 Red (340944)",
+              "thumbnail_url": "https://i2.rozetka.ua/goods/6520736/samsung_sm_r810nzdasek_images_6520736054.jpg",
+              "price": 1199,
+              "quantity": 1,
+              "description": "3.0GHz Dual-core Haswell Intel Core i5 Turbo Boost up to 3.2 GHz, 3MB L3 cache 8GB (two 4GB SO-DIMMs) of 1600MHz DDR3 SDRAM"
+            },
+            {
+              "id": 17,
+              "title": "Дитячий телефон-годинник з GPS-трекером Elari KidPhone 3G Black (KP-3GB)",
+              "thumbnail_url": "https://i2.rozetka.ua/goods/6520630/samsung_sm_r810nzkasek_images_6520630022.jpg",
+              "price": 2300,
+              "quantity": 20,
+              "description": "2.9 Ghz Dual-Core Intel Core i5 Broadwell Tubro boost up to 3.3 GHz with L3 3MB cache"
+            },
+            {
+              "id": 18,
+              "title": "Amazfit Bip Onyx Black",
+              "thumbnail_url": "https://i1.rozetka.ua/goods/1718306/samsung_gear_s3_frontier_images_1718306419.jpg",
+              "price": 5400,
+              "quantity": 1,
+              "description": "3.0GHz Dual-core Haswell Intel Core i5 Turbo Boost up to 3.2 GHz, 3MB L3 cache 8GB (two 4GB SO-DIMMs) of 1600MHz DDR3 SDRAM"
+            }
+          ]
+        },
+        "tablets": {
+          "catName": "Планшеты",
+          "products": [
+            {
+              "id": 20,
+              "title": "Планшет Pixus Touch 7 3G (HD) 16GB + Чехол в подарок!",
+              "thumbnail_url": "https://i2.rozetka.ua/goods/2408852/pixus_touch_7_3g_hd_16gb_images_2408852393.jpg",
+              "price": 1000,
+              "quantity": 10,
+              "description": "3.0GHz Dual-core Haswell Intel Core i5 Turbo Boost up to 3.2 GHz, 3MB L3 cache 8GB (two 4GB SO-DIMMs) of 1600MHz DDR3 SDRAM"
+            },
+            {
+              "id": 21,
+              "title": "Планшет Glofiish GPad Air",
+              "thumbnail_url": "https://i2.rozetka.ua/goods/2409647/glofiish_gpad_air_images_2409647073.jpg",
+              "price": 1200,
+              "quantity": 15,
+              "description": "Macbook Pro 13.3\" Retina MF841LL/A Model 2015 Option Ram Care 12/2016"
+            },
+            {
+              "id": 22,
+              "title": "Планшет Glofiish",
+              "thumbnail_url": "https://i2.rozetka.ua/goods/3331514/prestigio_pmt3157_4g_d_cis_images_3331514999.jpg",
+              "price": 1800,
+              "quantity": 1,
+              "description": "3.0GHz Dual-core Haswell Intel Core i5 Turbo Boost up to 3.2 GHz, 3MB L3 cache 8GB (two 4GB SO-DIMMs) of 1600MHz DDR3 SDRAM"
+            },
+            {
+              "id": 23,
+              "title": "Планшет Mystery MID-703G",
+              "thumbnail_url": "https://i1.rozetka.ua/goods/186932/mystery_mid-703g_images_186932117.jpg",
+              "price": 1000,
+              "quantity": 20,
+              "description": "2.9 Ghz Dual-Core Intel Core i5 Broadwell Tubro boost up to 3.3 GHz with L3 3MB cache"
+            },
+            {
+              "id": 24,
+              "title": "Планшет MID-703G",
+              "thumbnail_url": "https://i2.rozetka.ua/goods/2103255/impression_impad_m701_images_2103255868.jpg",
+              "price": 1800,
+              "quantity": 1,
+              "description": "3.0GHz Dual-core Haswell Intel Core i5 Turbo Boost up to 3.2 GHz, 3MB L3 cache 8GB (two 4GB SO-DIMMs) of 1600MHz DDR3 SDRAM"
+            }
+          ]
+        },
+        "tv": {
+          "catName": "Телевизоры",
+          "products": [
+            {
+              "id": 26,
+              "title": "Телевізор LG 43LJ622V + 0% кредит на 24 міс!",
+              "thumbnail_url": "https://i2.rozetka.ua/goods/7776775/lg_43lj622v_images_7776775710.jpg",
+              "price": 12000,
+              "quantity": 10,
+              "description": "3.0GHz Dual-core Haswell Intel Core i5 Turbo Boost up to 3.2 GHz, 3MB L3 cache 8GB (two 4GB SO-DIMMs) of 1600MHz DDR3 SDRAM"
+            },
+            {
+              "id": 27,
+              "title": "Телевізор LGA",
+              "thumbnail_url": "https://i1.rozetka.ua/goods/2354394/panasonic_tx_32dr400_images_2354394217.jpg",
+              "price": 5555,
+              "quantity": 15,
+              "description": "Macbook Pro 13.3\" Retina MF841LL/A Model 2015 Option Ram Care 12/2016"
+            },
+            {
+              "id": 28,
+              "title": "Телевізор Ergo LE32CT5025AK Оплата частинами! Або Сертифiкат Розетка на 500 грн.",
+              "thumbnail_url": "https://i1.rozetka.ua/goods/8254072/ergo_le32ct5025ak_images_8254072258.jpg",
+              "price": 3000,
+              "quantity": 1,
+              "description": "3.0GHz Dual-core Haswell Intel Core i5 Turbo Boost up to 3.2 GHz, 3MB L3 cache 8GB (two 4GB SO-DIMMs) of 1600MHz DDR3 SDRAM"
+            }
+          ]
+        }
+      }
+    },
+    "household": {
+      "catName": "Товары для дома",
+      "categories": {
+        "freezers": {
+          "catName": "Холодильники",
+          "products": [
+            {
+              "id": 120,
+              "title": "Холодильник LIEBHERR T11122 + сертификат 300 грн в подарок!",
+              "thumbnail_url": "https://i1.rozetka.ua/goods/4689578/delfa_dmf-50_images_4689578480.jpg",
+              "price": 9000,
+              "quantity": 10,
+              "description": "3 года официальной гарантии от производителя"
+            },
+            {
+              "id": 121,
+              "title": "Холодильник LIEBHERR",
+              "thumbnail_url": "https://i2.rozetka.ua/goods/5007996/ardesto_df90w_images_5007996384.jpg",
+              "price": 12000,
+              "quantity": 15,
+              "description": "1 год официальной гарантии от производителя"
+            },
+            {
+              "id": 122,
+              "title": "Холодильник LIEBHERR T 1404 + сертификат 300 грн в подарок!",
+              "thumbnail_url": "https://i1.rozetka.ua/goods/1698254/beko_b_1751_images_1698254233.jpg",
+              "price": 100000,
+              "quantity": 1,
+              "description": "2 года официальной гарантии от производителя"
+            },
+            {
+              "id": 123,
+              "title": "Однокамерний холодильник DELFA DMF-50",
+              "thumbnail_url": "https://i2.rozetka.ua/goods/1698314/7389131_images_1698314034.jpg",
+              "price": 9000,
+              "quantity": 20,
+              "description": "2 года официальной гарантии от производителя"
+            }
+          ]
+        },
+        "vacuumCleaners": {
+          "catName": "Пылесосы",
+          "products": [
+            {
+              "id": 210,
+              "title": "Пылесос без мешка BOSCH BGC2UK2000",
+              "thumbnail_url": "https://i1.rozetka.ua/goods/1831100/dirt_devil_ultima_black_dd2620_2_images_1831100357.jpg",
+              "price": 1000,
+              "quantity": 10,
+              "description": "Регулировка мощности: На корпусе"
+            },
+            {
+              "id": 220,
+              "title": "Пылесос BGC2UK2000",
+              "thumbnail_url": "https://i2.rozetka.ua/goods/2262503/electrolux_esc63eb_images_2262503194.jpg",
+              "price": 1200,
+              "quantity": 15,
+              "description": "Регулировка мощности: На корпусе"
+            },
+            {
+              "id": 230,
+              "title": "Пылесос без мешка BOSCH",
+              "thumbnail_url": "https://i2.rozetka.ua/goods/2822939/bosch_bgc2uk2000_images_2822939871.jpg",
+              "price": 7800,
+              "quantity": 1,
+              "description": "Регулировка мощности: На корпусе"
+            }
+          ]
+        },
+        "washers": {
+          "catName": "Стиральные машины",
+          "products": [
+            {
+              "id": 310,
+              "title": "Стиральная машина узкая SAMSUNG WW70K42101WDUA + сертификат 600 грн или кредит 0% и бесплатная доставка в подарок!",
+              "thumbnail_url": "https://i1.rozetka.ua/goods/6873803/samsung_ww70k42101wdua_images_6873803150.jpg",
+              "price": 7000,
+              "quantity": 10,
+              "description": "Скорость отжима: 1200 об/мин"
+            },
+            {
+              "id": 320,
+              "title": "Стиральная машина SAMSUNG",
+              "thumbnail_url": "https://i2.rozetka.ua/goods/3351131/samsung_wf60f1r2e2wd_ua_images_3351131511.jpg",
+              "price": 8200,
+              "quantity": 15,
+              "description": "Скорость отжима: 1200 об/мин"
+            },
+            {
+              "id": 330,
+              "title": "Стиральная машина узкая SAMSUNG",
+              "thumbnail_url": "https://i1.rozetka.ua/goods/2570289/e2sc_2160_w_ua_images_2570289119.jpg",
+              "price": 9800,
+              "quantity": 1,
+              "description": "Скорость отжима: 1200 об/мин"
+            },
+            {
+              "id": 340,
+              "title": "Стиральная SAMSUNG WW70K42101WDUA и бесплатная доставка в подарок!",
+              "thumbnail_url": "https://i1.rozetka.ua/goods/8328887/electrolux_ew6s3r26si_images_8328887794.jpg",
+              "price": 9000,
+              "quantity": 20,
+              "description": "Скорость отжима: 1200 об/мин"
+            }
+          ]
+        }
+      }
+    }
   },
-  {
-    "id": 2,
-    "title": "Macbook Pro 13.3\" Retina MF841LL/A",
-    "thumbnail_url": "http://media.bizwebmedia.net//sites/72783/data/images/2015/11/3220113retina13.jpg",
-    "price": 1200,
-    "quantity": 15,
-    "description": "Macbook Pro 13.3\" Retina MF841LL/A Model 2015 Option Ram Care 12/2016"
-  },
-  {
-    "id": 3,
-    "title": "Macbook Pro 15.4\" Retina MC975LL/A Model 2012",
-    "thumbnail_url": "http://media.bizwebmedia.net//sites/72783/data/images/2015/7/2913337mf841_13_inch_2_9ghz_with_retina_display_early_2015.png",
-    "price": 1800,
-    "quantity": 1,
-    "description": "3.0GHz Dual-core Haswell Intel Core i5 Turbo Boost up to 3.2 GHz, 3MB L3 cache 8GB (two 4GB SO-DIMMs) of 1600MHz DDR3 SDRAM"
-  },
-  {
-    "id": 4,
-    "title": "Retina MacBook Pro 13 inch MF841",
-    "thumbnail_url": "http://media.bizwebmedia.net//sites/72783/data/images/2016/2/4713895macbook_pro_retina.png",
-    "price": 1000,
-    "quantity": 20,
-    "description": "2.9 Ghz Dual-Core Intel Core i5 Broadwell Tubro boost up to 3.3 GHz with L3 3MB cache"
-  },
-  {
-    "id": 5,
-    "title": "Macbook Pro 15.4\" Retina MC975LL/A Model 2012",
-    "thumbnail_url": "http://media.bizwebmedia.net//sites/72783/data/images/2015/7/2913337mf841_13_inch_2_9ghz_with_retina_display_early_2015.png",
-    "price": 1800,
-    "quantity": 1,
-    "description": "3.0GHz Dual-core Haswell Intel Core i5 Turbo Boost up to 3.2 GHz, 3MB L3 cache 8GB (two 4GB SO-DIMMs) of 1600MHz DDR3 SDRAM"
-  },
-  {
-    "id": 6,
-    "title": "Retina MacBook Pro 13 inch MF841",
-    "thumbnail_url": "http://media.bizwebmedia.net//sites/72783/data/images/2016/2/4713895macbook_pro_retina.png",
-    "price": 1000,
-    "quantity": 20,
-    "description": "2.9 Ghz Dual-Core Intel Core i5 Broadwell Tubro boost up to 3.3 GHz with L3 3MB cache"
+
+  "categories": {
+    "electronics": {
+      "name": "Электроника",
+      "catThumbnail": "http://media.bizwebmedia.net//sites/72783/data/images/2016/2/4713895macbook_pro_retina.png",
+      "subCategories": [
+        {
+          "name": "Ноутбуки",
+          "key": "notebooks",
+          "catThumbnail": "http://media.bizwebmedia.net//sites/72783/data/images/2016/2/4713895macbook_pro_retina.png"
+        },
+        {
+          "name": "Часы",
+          "key": "watches",
+          "catThumbnail": "https://i1.rozetka.ua/goods/2269727/samsung_gear_sport_black_images_2269727424.jpg"
+        },
+        {
+          "name": "Телефоны",
+          "key": "phones",
+          "catThumbnail": "https://i1.rozetka.ua/goods/1828043/samsung_sm_a520fzdsek_images_1828043119.jpg"
+        },
+        {
+          "name": "Телевизоры",
+          "key": "tv",
+          "catThumbnail": "https://i2.rozetka.ua/goods/7776775/lg_43lj622v_images_7776775710.jpg"
+        },
+        {
+          "name": "Планшеты",
+          "key": "tablets",
+          "catThumbnail": "https://i2.rozetka.ua/goods/2408852/pixus_touch_7_3g_hd_16gb_images_2408852393.jpg"
+        }
+      ]
+    },
+    "household": {
+      "name": "Товары для дома",
+      "catThumbnail": "https://i1.rozetka.ua/goods/4689578/delfa_dmf-50_images_4689578480.jpg",
+      "subCategories": [
+        {
+          "name": "Холодильники",
+          "key": "freezers",
+          "catThumbnail": "https://i1.rozetka.ua/goods/4689578/delfa_dmf-50_images_4689578480.jpg"
+        },
+        {
+          "name": "Стиральные машины",
+          "key": "washers",
+          "catThumbnail": "https://i1.rozetka.ua/goods/6873803/samsung_ww70k42101wdua_images_6873803150.jpg"
+        },
+        {
+          "name": "Пылесосы",
+          "key": "vacuumCleaners",
+          "catThumbnail": "https://i1.rozetka.ua/goods/1831100/dirt_devil_ultima_black_dd2620_2_images_1831100357.jpg"
+        }
+      ]
+    }
   }
-]
+}

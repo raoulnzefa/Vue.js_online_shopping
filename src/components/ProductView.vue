@@ -3,23 +3,20 @@
         <div class="spinner-bg" v-show="isLoading">
             <spinner></spinner>
         </div>
-        <div class="product" v-show="!isLoading" v-if="productsFound">
-            <div class="thumbnail">
-                <img :src="product.thumbnail_url" alt="">
-            </div>
-            <div class="desc">
-                <h2>
-                    {{product.title}}</h2>
-                <div class="caption">
-                    {{product.description}}
+        <div v-show="!isLoading" v-if="productsFound">
+            <breadcrumbs></breadcrumbs>
+            <div class="product">
+                <div class="thumbnail">
+                    <img :src="product.thumbnail_url" alt="">
                 </div>
-                <div class="price">
-                    {{product.price}}
-                    грн.
+                <div class="desc">
+                    <h2>{{product.title}}</h2>
+                    <div class="caption">{{product.description}}</div>
+                    <div class="price">{{product.price}} грн.</div>
                 </div>
-            </div>
-            <div class="actions">
-                <a class="button is-primary" @click="addToCheckout(product)">Вкорзину</a>
+                <div class="actions">
+                    <a class="button is-primary" @click="addToCheckout(product)">Вкорзину</a>
+                </div>
             </div>
         </div>
         <not-found v-bind:msg="notFoundText" v-else></not-found>
@@ -30,20 +27,20 @@
     import {mapActions, mapGetters} from 'vuex'
     import Spinner from 'vue-simple-spinner'
     import NotFound from './NotFound'
+    import Breadcrumbs from './breadcrumbs/Breadcrumbs'
 
     export default {
         components: {
             NotFound,
-            Spinner
+            Spinner,
+            Breadcrumbs
         },
-
         data() {
             return {
                 productsFound: true,
                 notFoundText: 'Товар не найден'
             }
         },
-
         computed: {
             ...mapGetters(['products', 'isLoading']),
             product() {
@@ -58,7 +55,6 @@
                 }
             }
         },
-
         watch: {
             product: function (newVal, oldVal) {
                 if (!newVal.id) {
@@ -66,14 +62,9 @@
                 }
             }
         },
-
         methods: {
-            ...mapActions(['updateProducts', 'addToCheckout'])
+            ...mapActions(['addToCheckout'])
         },
-
-        mounted() {
-            this.updateProducts();
-        }
     }
 </script>
 
