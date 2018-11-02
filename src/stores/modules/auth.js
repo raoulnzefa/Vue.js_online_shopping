@@ -10,7 +10,7 @@ const state = {
         userName: '',
         email: ''
     },
-    isUser: false,
+    isUser: firebaseAuth().currentUser != null,
     lang : i18n.locale
 };
 
@@ -85,9 +85,10 @@ const actions = {
             });
     },
 
-    logout({commit}) {
+    logout({commit}, router) {
         firebaseAuth().signOut();
         commit(types.LOGOUT);
+        router.go('/');
     },
 
     firebaseAuthWatcher({commit, dispatch}) {

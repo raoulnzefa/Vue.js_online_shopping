@@ -18,6 +18,21 @@ export const router = new VueRouter({
     routes
 });
 
+// router.beforeEach((to, from, next) => {
+//     firebase.auth().onAuthStateChanged(function(user) {
+//         if (user) {
+//             console.log(user)
+//         } else {
+//             console.log('none')
+//         }
+//     })
+//     // if (to.meta.onlyGuest) {
+//     //     next('/');
+//     // } else {
+//     //     next();
+//     // }
+// });
+
 export var app = new Vue({
     el: '#app',
     router,

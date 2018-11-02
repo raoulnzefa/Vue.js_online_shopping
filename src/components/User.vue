@@ -1,7 +1,7 @@
 <template>
     <div class="columns is-centered">
         <div class="column">
-            <div class="bd-snippet-preview">
+            <div class="s-user-info">
                 <table class="table">
                     <thead>
                     <tr>
@@ -24,12 +24,6 @@
                     </tr>
                     </tbody>
                 </table>
-                <h1>Axios example</h1>
-                <ul class="list-group" v-if="countriesData.length">
-                    <li class="list-group-item" v-for="country in countriesData">
-                        {{country.name}}
-                    </li>
-                </ul>
             </div>
         </div>
     </div>
@@ -45,32 +39,6 @@
             return {
                 countriesData: []
             }
-        },
-        created() {
-            this.$http.get('https://restcountries.eu/rest/v2/').then((response) => {
-                this.countriesData = response.data
-            });
         }
     }
 </script>
-
-<style scoped>
-    h1 {
-        font-weight: bold;
-        font-size: 22px;
-        margin-bottom: 15px;
-    }
-    table {
-        width: 100%;
-    }
-    
-    .list-group {
-        text-align: left;
-    }
-
-    .list-group-item {
-        border: 1px solid #dedada;
-        border-radius: 4px;
-        padding: 10px;
-    }
-</style>

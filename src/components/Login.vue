@@ -36,9 +36,3 @@
         }
     }
 </script>
-
-<style scoped>
-    /*.column {*/
-        /*text-align: left;*/
-    /*}*/
-</style>

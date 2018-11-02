@@ -26,7 +26,7 @@
                             </div>
                             <div class="buttons" v-else>
                                 <router-link :to="'/user'" class="button is-light">{{currentUser.userName}}</router-link>
-                                <a class="button is-primary" href="javascript:;" @click="logout">{{$t('header.out')}}</a>
+                                <a class="button is-primary" href="javascript:;" @click="logout($router)">{{$t('header.out')}}</a>
                             </div>
                             <div class="buttons">
                                 <b-dropdown>
@@ -61,34 +61,3 @@
         }
     }
 </script>
-
-<style lang="scss">
-    header {
-        margin-bottom: 30px;
-    }
-
-    .navbar-item {
-        .buttons, .button {
-            margin-bottom: 0 !important;
-        }
-        .dropdown {
-            margin-left: 10px;
-            text-align: left;
-            .dropdown-menu {
-                min-width: inherit;
-            }
-        }
-    }
-
-    .navbar-btn a {
-        color: white;
-    }
-
-    .li-pointer {
-        cursor: pointer;
-    }
-
-    .li-pointer:hover {
-        cursor: pointer;
-    }
-</style>

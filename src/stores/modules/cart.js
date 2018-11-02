@@ -10,15 +10,15 @@ const state = {
 };
 
 const mutations = {
-    [types.UPDATE_CHECKOUT] (state, {item, isAdd, quantity}) {
+    [types.UPDATE_CHECKOUT] (state, {product, isAdd, quantity}) {
         if (isAdd) {
-            let id = item.id;
+            let id = product.id;
             let index = state.userCart.map((el) => {return el.id}).indexOf(id);
             if (index > -1) {
                 Vue.set(state.userCart[index], 'quantity', quantity);
             }
         } else {
-            state.userCart.push(item);
+            state.userCart.push(product);
         }
     },
 
@@ -26,10 +26,16 @@ const mutations = {
         state.userCart = items;
     },
 
-    [types.REMOVE_CHECKOUT] (state, {id}) {
+    [types.REMOVE_FROM_CHECKOUT] (state, {id}) {
         let index = state.userCart.map((el) => {return el.id}).indexOf(id);
+        let currQuantity = state.userCart[index].quantity - 1;
+
         if (index > -1) {
-            state.userCart.splice(index, 1);
+            if (currQuantity > 0) {
+                Vue.set(state.userCart[index], 'quantity', currQuantity);
+            } else {
+                state.userCart.splice(index, 1);
+            }
         }
     },
 
@@ -74,10 +80,10 @@ const actions = {
         context.commit(types.UPDATE_TOTAL_PRICE, priceArr);
     },
 
-    addToCheckout(context, item) {
+    addToCheckout(context, {product, category, subCategory}) {
         let userCartGetter = context.getters.userCart;
         let record = userCartGetter.filter(el => {
-            return el.id == item.id
+            return el.id == product.id
         });
         let isAdd = false;
         let quantity = 1;
@@ -88,8 +94,10 @@ const actions = {
             prevQuantity = record[0].quantity;
             quantity = prevQuantity + 1;
         }
-        item.quantity = quantity;
-        context.commit(types.UPDATE_CHECKOUT, {item, isAdd, quantity});
+
+        product = { ...product, category, subCategory };
+        product.quantity = quantity;
+        context.commit(types.UPDATE_CHECKOUT, {product, isAdd, quantity});
         context.dispatch('updateTotalPrice', userCartGetter);
         context.dispatch('updateCheckout', false);
     },
@@ -97,7 +105,7 @@ const actions = {
     removeFromCheckout(context, id) {
         let userCartGetter = context.getters.userCart;
         let removing = true;
-        context.commit(types.REMOVE_CHECKOUT, {id});
+        context.commit(types.REMOVE_FROM_CHECKOUT, {id});
         context.dispatch('updateTotalPrice', userCartGetter);
         context.dispatch('updateCheckout', removing);
     },

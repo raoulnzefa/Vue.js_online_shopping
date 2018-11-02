@@ -1,46 +1,48 @@
 <template>
     <div class="columns is-centered">
-        <div class="spinner-bg" v-show="isLoading">
-            <spinner></spinner>
-        </div>
-        <div class="bd-snippet-preview" v-show="!isLoading" v-if="userCart.length">
+        <!--<div class="spinner-bg" v-show="isLoading">-->
+            <!--<spinner></spinner>-->
+        <!--</div>-->
+        <div class="s-checkout-table" v-show="!isLoading" v-if="userCart.length">
                 <table class="table">
                     <thead>
                     <tr>
                         <th class="order-id">ID</th>
                         <th>Продукт</th>
-                        <th class="has-text-centered">Цена (грн)</th>
+                        <th class="s-price-cell has-text-centered">Цена (грн)</th>
                         <th class="has-text-centered">Количество</th>
                         <th class="has-text-centered">Действие</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr v-for="(item) in userCart">
+                        <tr v-for="(item) in userCart">
                         <td>
                             {{item.id}}
                         </td>
-                        <td>
-                            <img class="order-img" :src="item.thumbnail_url" alt="">
-                            <span>{{item.title}}</span>
+                        <td class="s-product-cell">
+                            <div class="s-product-cell-in">
+                                <div class="s-checkout-img">
+                                    <img :src="item.thumbnailUrl" alt="">
+                                </div>
+                                <router-link :to="'/categories/'+item.category+'/'+item.subCategory+'/'+ item.id">{{item.title}}</router-link>
+                            </div>
                         </td>
-                        <td class="has-text-centered">
+                        <td class="s-price-cell has-text-centered">
                             {{item.price}}
                         </td>
                         <td class="has-text-centered">
                             {{item.quantity}}
                         </td>
                         <td class="has-text-centered">
-                            <button class="button is-danger" @click="removeFromCheckout(item.id)">Удалтть</button>
+                            <button class="button is-danger" @click="removeFromCheckout(item.id)">Удалить</button>
                         </td>
                     </tr>
                     </tbody>
                 </table>
-                <div class="full-table">
-                    <a href="#" class="button is-warning">Вернуться назад</a>
-                    <div class="has-text-centered" style="width: 200px; vertical-align: middle;">
-                        <strong>
-                            {{totalPrice}} грн
-                        </strong>
+                <div class="s-checkout-footer">
+                    <a class="button is-warning" href="jacascript:;" @click="$router.go(-1)">Вернуться назад</a>
+                    <div class="has-text-centered">
+                        <strong>{{totalPrice}} грн</strong>
                     </div>
                     <div>
                         <button class="button is-success" @click="submitCheckout(userCart)">Оформить заказ</button>
@@ -68,36 +70,3 @@
         }
     }
 </script>
-
-<style scoped lang="scss">
-    .order-id {
-        width: 25px;
-    }
-
-    .order-img {
-        margin-right: 10px;
-        display: inline-block;
-        vertical-align: middle;
-        max-width: 60px !important;
-    }
-    .order-img + span {
-        display: inline-block;
-        vertical-align: middle;
-    }
-
-    .full-table {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .bd-snippet-preview {
-        margin-bottom: 40px;
-        width: 80%;
-
-        .table {
-            width: 100%;
-        }
-    }
-</style>

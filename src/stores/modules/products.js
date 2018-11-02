@@ -5,7 +5,13 @@ import {Loading} from 'buefy/dist/components/loading'
 
 const state = {
     products: [],
-    categories: []
+    categories: [],
+    path: [
+        {
+            title: "Главная",
+            link: "/"
+        }
+    ]
 };
 
 const mutations = {
@@ -14,13 +20,23 @@ const mutations = {
     },
     [types.UPDATE_CATEGORIES] (state, categories) {
         state.categories = Object.assign({}, state.categories,  categories);
+    },
+    [types.UPDATE_PATH] (state, path) {
+        // let found = state.path.some(function (el) {
+        //     return el.link === path;
+        // });
+        // if (!found) {
+        //     state.path.push({
+        //         title: "Test",
+        //         link: path
+        //     });
+        // }
     }
 };
 
 const actions = {
     updateProducts({commit}, {category, subCategory}) {
         db.ref('products/'+category+'/categories/'+subCategory).on("value", (products) => {
-            console.log(products.val())
             commit(types.UPDATE_PRODUCTS, products.val());
             // commit(types.LOADED);
         }, (errorObject) => {
@@ -34,12 +50,18 @@ const actions = {
         }, (errorObject) => {
             console.log("The read failed: " + errorObject.code);
         });
+    },
+    getCurrentPath(context, {path}) {
+        context.commit(types.UPDATE_PATH, path)
     }
 };
 
 const getters = {
     products: state => {
         return state.products;
+    },
+    path: state => {
+        return state.path;
     },
     categories: state => {
         return state.categories;

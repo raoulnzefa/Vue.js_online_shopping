@@ -1,25 +1,25 @@
 <template>
     <div>
-        <div class="spinner-bg" v-show="isLoading">
-            <spinner></spinner>
-        </div>
-        <div v-show="!isLoading" v-if="productsFound">
-            <breadcrumbs></breadcrumbs>
-            <div class="product">
-                <div class="thumbnail">
-                    <img :src="product.thumbnail_url" alt="">
-                </div>
-                <div class="desc">
-                    <h2>{{product.title}}</h2>
-                    <div class="caption">{{product.description}}</div>
-                    <div class="price">{{product.price}} грн.</div>
-                </div>
-                <div class="actions">
-                    <a class="button is-primary" @click="addToCheckout(product)">Вкорзину</a>
+        <!--<div class="spinner-bg" v-show="isLoading">-->
+            <!--<spinner></spinner>-->
+        <!--</div>-->
+        <breadcrumbs :path="path"></breadcrumbs>
+        <div v-if="productFound">
+            <div class="s-product">
+                <div class="s-product-in">
+                    <div class="thumbnail">
+                        <img :src="product.thumbnailUrl" alt="">
+                    </div>
+                    <div class="desc">
+                        <div class="title">{{product.title}}</div>
+                        <div class="caption">{{product.description}}</div>
+                        <div class="price">{{product.price}} грн.</div>
+                        <a class="button is-primary" @click="addToCheckout({product, category, subCategory})">Вкорзину</a>
+                    </div>
                 </div>
             </div>
         </div>
-        <not-found v-bind:msg="notFoundText" v-else></not-found>
+        <!--<not-found v-bind:msg="notFoundText" v-else></not-found>-->
     </div>
 </template>
 
@@ -37,62 +37,41 @@
         },
         data() {
             return {
-                productsFound: true,
+                productFound: true,
                 notFoundText: 'Товар не найден'
             }
         },
         computed: {
-            ...mapGetters(['products', 'isLoading']),
+            ...mapGetters(['products', 'path']),
             product() {
                 let prId = this.$route.params.id;
                 if (prId > this.products.length) {
                     return {};
                 } else {
-                    let filtered = this.products.filter(el => {
+                    let filtered = this.products.products.filter(el => {
                         return el.id == prId
                     });
                     return filtered[0];
                 }
-            }
-        },
-        watch: {
-            product: function (newVal, oldVal) {
-                if (!newVal.id) {
-                    this.productsFound = false
-                }
+            },
+            category() {
+                return this.$route.params.category;
+            },
+            subCategory() {
+                return this.$route.params.subCategory;
             }
         },
         methods: {
-            ...mapActions(['addToCheckout'])
+            ...mapActions(['addToCheckout', 'updateProducts', 'getCurrentPath'])
         },
+        mounted() {
+            let category = this.category;
+            let subCategory = this.subCategory;
+            this.updateProducts({
+                category,
+                subCategory
+            });
+            this.getCurrentPath(this.$route);
+        }
     }
 </script>
-
-<style scoped>
-    .product {
-        max-width: 600px;
-        margin: 0 auto;
-        border: 1px solid #aeaeae54;
-        padding: 20px;
-    }
-
-    img {
-        max-height: 300px;
-    }
-
-    .desc {
-        text-align: left;
-    }
-
-    h2 {
-        font-size: 20px;
-        font-weight: bold;
-        margin-bottom: 10px;
-    }
-
-    .price {
-        font-weight: bold;
-        margin-top: 5px;
-        margin-bottom: 5px;
-    }
-</style>

@@ -13,7 +13,7 @@
 
 <script>
     import Header from './components/Header.vue'
-    import {mapActions, mapGetters} from 'vuex'
+    import {mapActions} from 'vuex'
 
     export default {
         name: 'app',
@@ -29,20 +29,6 @@
     }
 </script>
 
-<style>
-    #app {
-        font-family: 'Avenir', Helvetica, Arial, sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        text-align: center;
-        color: #2c3e50;
-    }
-    
-    .label {
-        text-align: left;
-    }
-
-    .spinner-bg {
-        margin-top: 150px;
-    }
+<style lang="scss">
+    @import './assets/scss/main.scss';
 </style>

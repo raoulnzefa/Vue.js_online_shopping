@@ -1,17 +1,14 @@
 <template>
     <nav class="breadcrumb" aria-label="breadcrumbs">
         <ul>
-            <li><a href="#">Bulma</a></li>
-            <li><a href="#">Documentation</a></li>
-            <li><a href="#">Components</a></li>
-            <li class="is-active"><a href="#" aria-current="page">Breadcrumb</a></li>
+            <li v-for="item in path"><router-link :to="item.link"><span>{{item.title}}</span></router-link></li>
         </ul>
     </nav>
 </template>
 
 <script>
     export default {
-
+        props: ['path']
     }
 </script>
 

@@ -5,11 +5,10 @@
         <!--</div>-->
         <!--<breadcrumbs></breadcrumbs>-->
         <!--<products-filter :products="products"></products-filter>-->
-        <div class="title">
-            Категория: {{products.catName}}
-        </div>
+        <breadcrumbs :path="path"></breadcrumbs>
+        <div class="s-page-title">Категория: {{products.catName}}</div>
         <div class="columns is-multiline">
-            <product-item v-for="prod in products.products" :item="prod" :key="prod.id"></product-item>
+            <product-item v-for="prod in products.products" :product="prod" :category="$route.params.category" :subCategory="$route.params.subCategory" :key="prod.id"></product-item>
         </div>
     </div>
 </template>
@@ -17,7 +16,7 @@
 <script>
     import {mapActions, mapGetters} from 'vuex'
     import Spinner from 'vue-simple-spinner'
-    import Product from './product/Product.vue'
+    import Product from './products/ProductItem.vue'
     import Breadcrumbs from './breadcrumbs/Breadcrumbs'
     import productsFilter from './filter/productsFilter'
     import {app} from '../main'
@@ -36,34 +35,16 @@
         },
 
         methods: {
-            ...mapActions(['updateProducts'])
+            ...mapActions(['updateProducts', 'getCurrentPath'])
         },
         computed: {
-            ...mapGetters(['products'])
+            ...mapGetters(['products', 'path'])
         },
         mounted() {
             let category = this.$route.params.category;
             let subCategory = this.$route.params.subCategory;
-            this.updateProducts({category, subCategory})
+            this.updateProducts({category, subCategory});
+            this.getCurrentPath(this.$route);
         }
     }
 </script>
-
-<style lang="scss">
-    img {
-        width: auto !important;
-        max-width: 100% !important;
-        margin: 0 auto;
-    }
-
-    .centered-content {
-        text-align: left;
-        .column {
-            margin: 0 auto;
-        }
-    }
-
-    .card {
-        height: 100%;
-    }
-</style>
