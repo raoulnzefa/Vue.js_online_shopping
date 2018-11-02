@@ -2,32 +2,14 @@
     <div>
         <breadcrumbs :path="path"></breadcrumbs>
         <div class="columns is-multiline" v-if="!isSubCategory">
-            <div class="column is-4" v-for="(cat, key) in categories">
-                <router-link :to="'/categories/'+key" exact>
-                    <div class="s-card card">
-                        <div class="thumbnail">
-                            <img :src="cat.catThumbnail" alt="">
-                        </div>
-                        <div class="title">{{cat.name}}</div>
-                    </div>
-                </router-link>
-            </div>
+            <category v-for="(category, key) in categories" :key="key" :category="category" :route="'/categories/'+key"></category>
         </div>
         <div v-else-if="subCategories">
             <div class="s-page-title">
                 Категория: {{currentCat}}
             </div>
             <div class="columns is-multiline">
-                <div class="column is-4" v-for="(subCat) in subCategories.subCategories">
-                    <router-link :to="'/categories/'+currentCat+'/'+subCat.key" exact>
-                        <div class="s-card card">
-                            <div class="thumbnail">
-                                <img :src="subCat.catThumbnail" alt="">
-                            </div>
-                            <div class="title">{{subCat.name}}</div>
-                        </div>
-                    </router-link>
-                </div>
+                <category v-for="subCat in subCategories.subCategories" :key="subCat.key" :category="subCat" :route="'/categories/'+currentCat+'/'+subCat.key"></category>
             </div>
         </div>
     </div>
