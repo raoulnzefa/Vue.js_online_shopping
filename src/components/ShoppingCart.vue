@@ -15,7 +15,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="(product) in userCart">
+                        <tr v-for="(product) in userCart" :key="product.id">
                         <td>
                             {{product.id}}
                         </td>
