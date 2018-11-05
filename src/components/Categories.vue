@@ -5,9 +5,7 @@
             <category v-for="(category, key) in categories" :key="key" :category="category" :route="'/categories/'+key"></category>
         </div>
         <div v-else-if="subCategories">
-            <div class="s-page-title">
-                Категория: {{currentCat}}
-            </div>
+            <div class="s-page-title">Категория: {{currentCat}}</div>
             <div class="columns is-multiline">
                 <category v-for="subCat in subCategories.subCategories" :key="subCat.key" :category="subCat" :route="'/categories/'+currentCat+'/'+subCat.key"></category>
             </div>

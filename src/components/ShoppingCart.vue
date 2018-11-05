@@ -3,7 +3,7 @@
         <!--<div class="spinner-bg" v-show="isLoading">-->
             <!--<spinner></spinner>-->
         <!--</div>-->
-        <div class="s-checkout-table" v-show="!isLoading" v-if="userCart.length">
+        <div class="s-checkout-table" v-if="userCart.length">
                 <table class="table">
                     <thead>
                     <tr>
@@ -15,26 +15,26 @@
                     </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="(item) in userCart">
+                        <tr v-for="(product) in userCart">
                         <td>
-                            {{item.id}}
+                            {{product.id}}
                         </td>
                         <td class="s-product-cell">
                             <div class="s-product-cell-in">
                                 <div class="s-checkout-img">
-                                    <img :src="item.thumbnailUrl" alt="">
+                                    <img :src="product.thumbnailUrl" alt="">
                                 </div>
-                                <router-link :to="'/categories/'+item.category+'/'+item.subCategory+'/'+ item.id">{{item.title}}</router-link>
+                                <router-link :to="'/categories/'+product.category+'/'+product.subCategory+'/'+ product.id">{{product.title}}</router-link>
                             </div>
                         </td>
                         <td class="s-price-cell has-text-centered">
-                            {{item.price}}
+                            {{product.price}}
                         </td>
                         <td class="has-text-centered">
-                            {{item.quantity}}
+                            {{product.quantity}}
                         </td>
                         <td class="has-text-centered">
-                            <button class="button is-danger" @click="removeFromCheckout(item.id)">Удалить</button>
+                            <button class="button is-danger" @click="removeFromCheckout(product.id)">Удалить</button>
                         </td>
                     </tr>
                     </tbody>
@@ -49,7 +49,7 @@
                     </div>
                 </div>
             </div>
-        <div class="is-centered" v-show="!isLoading" v-else>
+        <div class="is-centered" v-else>
             <h2>Ваша корзина пуста!</h2>
         </div>
     </div>
@@ -67,6 +67,9 @@
         },
         methods: {
             ...mapActions(['addToCheckout', 'submitCheckout', 'getCartFromDB', 'removeFromCheckout'])
+        },
+        created() {
+            this.getCartFromDB(this.userCart);
         }
     }
 </script>
