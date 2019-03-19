@@ -5,7 +5,6 @@
         <!--</div>-->
         <!--<breadcrumbs></breadcrumbs>-->
         <!--<products-filter :products="products"></products-filter>-->
-        <breadcrumbs :path="path"></breadcrumbs>
         <div class="s-page-title">Категория: {{products.catName}}</div>
         <div class="columns is-multiline">
             <product-item v-for="prod in products.products" :product="prod" :category="$route.params.category" :subCategory="$route.params.subCategory" :key="prod.id"></product-item>

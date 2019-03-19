@@ -5,8 +5,7 @@ import {Toast} from 'buefy/dist/components/toast'
 import {i18n} from '../../lang/lang'
 
 const state = {
-    userCart: [],
-    totalPrice: 0
+    userCart: []
 };
 
 const mutations = {
@@ -37,10 +36,6 @@ const mutations = {
                 state.userCart.splice(index, 1);
             }
         }
-    },
-
-    [types.UPDATE_TOTAL_PRICE] (state, price) {
-        state.totalPrice = price;
     }
 };
 
@@ -73,13 +68,6 @@ const actions = {
             });
     },
 
-    updateTotalPrice(context) {
-        let priceArr = context.state.userCart.reduce((sum, el) => {
-            return sum + (el.price * el.quantity);
-        }, 0);
-        context.commit(types.UPDATE_TOTAL_PRICE, priceArr);
-    },
-
     addToCheckout(context, {product, category, subCategory}) {
         let userCartGetter = context.getters.userCart;
         let record = userCartGetter.filter(el => {
@@ -98,7 +86,6 @@ const actions = {
         product = { ...product, category, subCategory };
         product.quantity = quantity;
         context.commit(types.UPDATE_CHECKOUT, {product, isAdd, quantity});
-        context.dispatch('updateTotalPrice', userCartGetter);
         context.dispatch('updateCheckout', false);
     },
 
@@ -106,7 +93,6 @@ const actions = {
         let userCartGetter = context.getters.userCart;
         let removing = true;
         context.commit(types.REMOVE_FROM_CHECKOUT, {id});
-        context.dispatch('updateTotalPrice', userCartGetter);
         context.dispatch('updateCheckout', removing);
     },
 
@@ -116,7 +102,6 @@ const actions = {
             .then((data) => {
                 if (data.val()) {
                     context.commit(types.UPDATE_CHECKOUT_FROM_DB, data.val());
-                    context.dispatch('updateTotalPrice');
                     context.commit(types.LOADED);
                 }
             })

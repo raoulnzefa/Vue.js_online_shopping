@@ -1,8 +1,5 @@
 <template>
     <div class="columns is-centered">
-        <!--<div class="spinner-bg" v-show="isLoading">-->
-            <!--<spinner></spinner>-->
-        <!--</div>-->
         <div class="s-checkout-table" v-if="userCart.length">
                 <table class="table">
                     <thead>
@@ -16,9 +13,7 @@
                     </thead>
                     <tbody>
                         <tr v-for="(product) in userCart" :key="product.id">
-                        <td>
-                            {{product.id}}
-                        </td>
+                        <td>{{product.id}}</td>
                         <td class="s-product-cell">
                             <div class="s-product-cell-in">
                                 <div class="s-checkout-img">
@@ -27,12 +22,8 @@
                                 <router-link :to="'/categories/'+product.category+'/'+product.subCategory+'/'+ product.id">{{product.title}}</router-link>
                             </div>
                         </td>
-                        <td class="s-price-cell has-text-centered">
-                            {{product.price}}
-                        </td>
-                        <td class="has-text-centered">
-                            {{product.quantity}}
-                        </td>
+                        <td class="s-price-cell has-text-centered">{{product.price}}</td>
+                        <td class="has-text-centered">{{product.quantity}}</td>
                         <td class="has-text-centered">
                             <button class="button is-danger" @click="removeFromCheckout(product.id)">Удалить</button>
                         </td>
@@ -57,18 +48,17 @@
 
 <script>
     import {mapActions, mapGetters} from 'vuex'
-    import Spinner from 'vue-simple-spinner'
     export default {
-        components: {
-            Spinner
-        },
         computed: {
-            ...mapGetters(['userCart', 'isUser', 'isLoading', 'totalPrice'])
+            ...mapGetters(['userCart', 'isUser', 'isLoading']),
+            totalPrice() {
+                return this.userCart.reduce((total, el) => total + (el.price * el.quantity), 0);
+            }
         },
         methods: {
             ...mapActions(['addToCheckout', 'submitCheckout', 'getCartFromDB', 'removeFromCheckout'])
         },
-        created() {
+        created () {
             this.getCartFromDB(this.userCart);
         }
     }
