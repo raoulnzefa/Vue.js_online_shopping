@@ -90,7 +90,6 @@ const actions = {
     },
 
     removeFromCheckout(context, id) {
-        let userCartGetter = context.getters.userCart;
         let removing = true;
         context.commit(types.REMOVE_FROM_CHECKOUT, {id});
         context.dispatch('updateCheckout', removing);

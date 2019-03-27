@@ -1,7 +1,5 @@
 import * as types from '../mutations-types'
 import {db} from '../../db/config'
-import {Toast} from 'buefy/dist/components/toast'
-import {Loading} from 'buefy/dist/components/loading'
 
 const state = {
     products: [],
@@ -20,17 +18,6 @@ const mutations = {
     },
     [types.UPDATE_CATEGORIES] (state, categories) {
         state.categories = Object.assign({}, state.categories,  categories);
-    },
-    [types.UPDATE_PATH] (state, path) {
-        // let found = state.path.some(function (el) {
-        //     return el.link === path;
-        // });
-        // if (!found) {
-        //     state.path.push({
-        //         title: "Test",
-        //         link: path
-        //     });
-        // }
     }
 };
 

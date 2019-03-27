@@ -1,11 +1,5 @@
 <template>
     <div>
-        <!--<div class="spinner-bg" v-show="isLoading">-->
-            <!--<spinner></spinner>-->
-        <!--</div>-->
-        <!--<breadcrumbs></breadcrumbs>-->
-        <!--<products-filter :products="products"></products-filter>-->
-        <div class="s-page-title">Категория: {{products.catName}}</div>
         <div class="columns is-multiline">
             <product-item v-for="prod in products.products" :product="prod" :category="$route.params.category" :subCategory="$route.params.subCategory" :key="prod.id"></product-item>
         </div>
@@ -14,25 +8,14 @@
 
 <script>
     import {mapActions, mapGetters} from 'vuex'
-    import Spinner from 'vue-simple-spinner'
     import Product from './products/ProductItem.vue'
-    import Breadcrumbs from './breadcrumbs/Breadcrumbs'
-    import productsFilter from './filter/productsFilter'
-    import {app} from '../main'
+    import ProductsFilter from './filter/productsFilter'
 
     export default {
         components: {
             ProductItem: Product,
-            Spinner,
-            productsFilter,
-            Breadcrumbs
+            ProductsFilter
         },
-        data() {
-            return {
-//                show: false
-            }
-        },
-
         methods: {
             ...mapActions(['updateProducts', 'getCurrentPath'])
         },

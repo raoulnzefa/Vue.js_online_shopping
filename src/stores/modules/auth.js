@@ -32,6 +32,7 @@ const mutations = {
 };
 
 const actions = {
+    /*eslint-disable*/
     registerUser({}, {name, email, password}) {
         firebaseAuth()
             .createUserWithEmailAndPassword(email, password)
@@ -65,7 +66,7 @@ const actions = {
                 }
             });
     },
-
+    /*eslint-disable*/
     login({}, {email, password}) {
         return firebaseAuth().signInWithEmailAndPassword(email, password)
             .then(({user}) => {
